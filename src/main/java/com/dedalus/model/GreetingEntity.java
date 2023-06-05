@@ -1,11 +1,15 @@
 package com.dedalus.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class GreetingEntity extends PanacheEntity {
+public class GreetingEntity {
+    @Id
+    @GeneratedValue
+    public Long id;
+
     private String phrase;
 
     public String getPhrase() {
@@ -14,5 +18,13 @@ public class GreetingEntity extends PanacheEntity {
 
     public void setPhrase(String field) {
         this.phrase = field;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
