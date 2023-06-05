@@ -1,4 +1,13 @@
-# intro
+# Intro
+This repository could be a starting point of this workshop's programming project.
+If you want to, you could generate your own starter code on https://code.quarkus.io/ .
+
+However, note that this project has been created specifically using Java 11 and Quarkus 2.13.8 to fit the Dedalus tech stack, whereas - as of writing - 
+the code generator on quarkus.io will use the recommended Java version 17 and Quarkus 3.1.
+
+# Generated Intro
+From this point on, this file contains Quarkus' auto-generated README.md.
+The run instructions should be suitable for your projects.
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -30,22 +39,6 @@ If you want to build an _über-jar_, execute the following command:
 ```
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/intro-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
 ## Related Guides
 
