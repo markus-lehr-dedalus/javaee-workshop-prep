@@ -15,7 +15,7 @@ public class GreetingResourceTest {
           .when().get("/hello")
           .then()
              .statusCode(200)
-             .body(is("Hello RESTEasy"));
+             .body(is("{\"id\":1,\"phrase\":\"Hello World!\"}"));
     }
 
 }
