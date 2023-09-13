@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -26,7 +27,7 @@ public class CarResource {
 
     @POST
     @Transactional
-    public CarModel create(CarModel carModel) {
+    public CarModel create(@Valid CarModel carModel) {
         CarEntity carEntity = carMapper.mapToEntity(carModel);
         carEntity = carRepository.save(carEntity);
         log.info("Created car " + carEntity);
