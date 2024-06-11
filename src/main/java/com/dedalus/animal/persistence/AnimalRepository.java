@@ -16,4 +16,8 @@ public class AnimalRepository {
     public List<AnimalEntity> findAll() {
         return em.createQuery("SELECT a FROM AnimalEntity a", AnimalEntity.class).getResultList();
     }
+
+    public AnimalEntity merge(AnimalEntity entity) {
+        return em.merge(entity);
+    }
 }
