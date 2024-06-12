@@ -7,6 +7,7 @@ import com.dedalus.persistence.CountryRepository;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -38,7 +39,7 @@ public class CountryResource {
 
     @POST
     @Transactional
-    public CountryModel addCountry(CountryModel country) {
+    public CountryModel addCountry(@Valid CountryModel country) {
         return mapper.map(repository.save(mapper.map(country)));
     }
 }
