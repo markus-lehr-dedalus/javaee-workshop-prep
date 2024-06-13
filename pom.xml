@@ -68,6 +68,15 @@
       <version>1.18.28</version>
       <scope>provided</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.eclipse.microprofile.fault-tolerance/microprofile-fault-tolerance-api -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-fault-tolerance</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-rest-client-jsonb</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

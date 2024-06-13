@@ -3,6 +3,7 @@ package com.dedalus.model;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,5 +19,6 @@ public class CountryModel {
     private String countryCode;
     @Min(1000)
     private Long population;
+    @JsonbProperty
     private String continent;
 }
