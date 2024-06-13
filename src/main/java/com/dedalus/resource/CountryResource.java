@@ -27,20 +27,20 @@ public class CountryResource {
     public List<CountryModel> getCountries() {
         return repository.getAll()
                          .stream()
-                         .map(mapper::map)
+                         .map(mapper::mapEntityToModel)
                          .collect(Collectors.toList());
     }
 
     @GET
     @Path("{id}")
     public CountryModel getCountry(@PathParam("id") Long countryId) {
-        return mapper.map(repository.findById(countryId));
+        return mapper.mapEntityToModel(repository.findById(countryId));
     }
 
     @POST
     @Transactional
     public CountryModel addCountry(@Valid CountryModel country) {
-        return mapper.map(repository.save(mapper.map(country)));
+        return mapper.mapEntityToModel(repository.save(mapper.mapModelToEntity(country)));
     }
 
     @POST
@@ -50,9 +50,9 @@ public class CountryResource {
         List<CountryModel> countries = apiNinjaService.getCountries(name, numberOfCountries);
         countries = countries
                 .stream()
-                .map(mapper::map)
+                .map(mapper::mapModelToEntity)
                 .map(repository::save)
-                .map(mapper::map)
+                .map(mapper::mapEntityToModel)
                 .collect(Collectors.toList());
         System.out.println(countries);
         return countries;

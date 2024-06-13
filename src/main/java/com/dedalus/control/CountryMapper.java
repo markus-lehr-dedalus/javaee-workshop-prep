@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  */
 @ApplicationScoped
 public class CountryMapper {
-    public CountryModel map(CountryEntity entity) {
+    public CountryModel mapEntityToModel(CountryEntity entity) {
         if (entity == null) {
             return null;
         }
@@ -23,7 +23,7 @@ public class CountryMapper {
                 .setPopulation(entity.getPopulation())
                 .setContinent(entity.getContinent());
     }
-    public CountryModel map(ApiNinjaCountryModel model) {
+    public CountryModel mapApiNinjaToModel(ApiNinjaCountryModel model) {
         if (model == null) {
             return null;
         }
@@ -34,7 +34,7 @@ public class CountryMapper {
                 .setContinent(model.getContinent());
     }
 
-    public CountryEntity map(CountryModel model) {
+    public CountryEntity mapModelToEntity(CountryModel model) {
         if (model == null) {
             return null;
         }

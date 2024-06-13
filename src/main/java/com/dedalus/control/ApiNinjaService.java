@@ -9,7 +9,6 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,7 +32,10 @@ public class ApiNinjaService {
             throw new RuntimeException("Random error occurred");
         }
         Collection<ApiNinjaCountryModel> countries = restClient.getCountries(name, limit, apiKey);
-        return countries.stream().map(countryMapper::map).collect(Collectors.toList());
+        return countries
+                .stream()
+                .map(countryMapper::mapApiNinjaToModel)
+                .collect(Collectors.toList());
     }
 
     private List<CountryModel> countryFallback(String name, Integer limit) {
