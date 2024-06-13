@@ -9,13 +9,14 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class ApiNinjaService {
+    public static final List<CountryModel> FALLBACK_COUNTRIES = List.of();
+
     @Inject
     CountryMapper countryMapper;
     @Inject
@@ -28,9 +29,6 @@ public class ApiNinjaService {
     @Fallback(fallbackMethod = "countryFallback")
     public List<CountryModel> getCountries(String name, Integer limit) {
         System.out.println("Attempting to get countries");
-        if (Math.random() < 0.5) {
-            throw new RuntimeException("Random error occurred");
-        }
         Collection<ApiNinjaCountryModel> countries = restClient.getCountries(name, limit, apiKey);
         return countries
                 .stream()
@@ -39,6 +37,7 @@ public class ApiNinjaService {
     }
 
     private List<CountryModel> countryFallback(String name, Integer limit) {
-        return new ArrayList<>();
+        System.err.println("Falling back");
+        return FALLBACK_COUNTRIES;
     }
 }
